@@ -26,13 +26,24 @@ class Volunteer
     @id = result.first().fetch("id").to_i
   end
   def self.clear
-  DB.exec("DELETE FROM volunteers *;")
-end
-def self.find(id)
-   volunteer= DB.exec("SELECT * FROM volunteers WHERE id = #{id};").first
-   name = volunteer.fetch("name")
-   project_id = volunteer.fetch("project_id").to_i
-   id = volunteer.fetch("id").to_i
-   Volunteer.new({:name => name, :project_id => project_id, :id => id})
- end
-end
+    DB.exec("DELETE FROM volunteers *;")
+  end
+  def self.find(id)
+    volunteer= DB.exec("SELECT * FROM volunteers WHERE id = #{id};").first
+    if volunteer
+      name = volunteer.fetch("name")
+      project_id = volunteer.fetch("project_id").to_i
+      id = volunteer.fetch("id").to_i
+      Volunteer.new({:name => name, :project_id => project_id, :id => id})
+    else
+      nil
+    end
+    def update(name, project_id)
+      @name = name
+      @project_id = project_id
+      DB.exec("UPDATE volunteers SET name = '#{@name}', project_id = #{@project_id} WHERE id = #{@id};")
+    end
+    def delete
+      DB.exec("DELETE FROM citties WHERE id = #{@id};")
+    end
+  end
