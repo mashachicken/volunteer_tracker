@@ -1,6 +1,10 @@
 require('spec_helper')
 
 describe Volunteer do
+  before(:each) do
+    @project = Project.new({:name => "first", :id => nil})
+    @project.save()
+  end
   describe '#name' do
     it 'returns the name of the volunteer' do
       test_volunteer = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
@@ -50,6 +54,32 @@ describe Volunteer do
       volunteer2.save()
       Volunteer.clear
       expect(Volunteer.all).to(eq([]))
+    end
+  end
+  describe('#update') do
+    it("updates volunteer by id") do
+      volunteer = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
+      volunteer.save()
+      volunteer.update("Lisa", @project.id)
+      expect(volunteer.name).to(eq("Beaverton"))
+    end
+  end
+  describe('.find_by_project') do
+    it("finds volunteers for a project") do
+      project2 = Project.new({:name => "first", :id => nil})
+      project2.save
+      volunteer = Volunteer.new({:name => "Masha", :project_id => @project.id, :id => nil})
+      volunteer.save()
+      volunteer2 = Volunteer.new({:name => "Lisa", :project_id => project2.id , :id => nil})
+      volunteer2.save()
+      expect(Volunteer.find_by_project(project2.id)).to(eq([volunteer2]))
+    end
+  end
+  describe('#project') do
+    it("finds the project a volunteer belongs to") do
+      volunteer = Volunteer.new({:name => "Masha", :project_id => @project.id, :id => nil})
+      volunteer.save()
+      expect(volunteer.project()).to(eq(@project))
     end
   end
 end
