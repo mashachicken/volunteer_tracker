@@ -61,7 +61,7 @@ describe Volunteer do
       volunteer = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
       volunteer.save()
       volunteer.update("Lisa", @project.id)
-      expect(volunteer.name).to(eq("Beaverton"))
+      expect(volunteer.name).to(eq("Lisa"))
     end
   end
   describe('.find_by_project') do
