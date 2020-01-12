@@ -1,0 +1,28 @@
+
+<h2>Project List</h2>
+
+<h3>Click on a project to see its schedule:</h3>
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><a href="/projects/<%= project.id %>"><%= project.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no projects to display.</p>
+<% end %>
+<form class="" action="/projects/new" method="get">
+  <button type="submit" name="button">Add a new project</button>
+</form>
+
+
+<form action="/projects/search" method="get">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>
+
+<!-- <p><a href="/time_table"> Time table</a></p> -->
+<p><a href="/projects">Return to projects list</a></p>
