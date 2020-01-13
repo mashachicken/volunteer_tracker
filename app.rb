@@ -10,7 +10,6 @@ get('/') do
 end
 get('/projects') do
   @projects = Project.all
-  # @projects_sold = Project].all_sold
   erb(:projects)
 end
 get ('/projects/new') do
