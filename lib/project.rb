@@ -9,7 +9,6 @@ class Project
   def ==(other)
     self.class.eql?(other.class) & self.name.eql?(other.name)
   end
-
   def self.all
     database_projects = DB.exec("SELECT * FROM projects;")
     projects = []
@@ -44,5 +43,4 @@ class Project
   def volunteers
     Volunteer.find_by_project(self.id)
   end
-
 end

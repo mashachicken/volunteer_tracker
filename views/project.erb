@@ -2,15 +2,15 @@
 
 <h3>Project Volunteers</h3>
 
-  <% if @project.volunteers %>
-    <ul>
-      <% @project.volunteers.each do |volunteer| %>
-        <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>There are no volunteers listed for this project yet.</p>
+<% if @project.volunteers %>
+<ul>
+  <% @project.volunteers.each do |volunteer| %>
+  <li><a href="/projects/<%= @project.id %>/volunteers/<%= volunteer.id %>"><%= volunteer.name %></a></li>
   <% end %>
+</ul>
+<% else %>
+<p>There are no volunteers listed for this project yet.</p>
+<% end %>
 
 <h4>Add a volunteer:</h4>
 

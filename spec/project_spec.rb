@@ -21,13 +21,13 @@ describe Project do
     expect(project.id).to be_an_instance_of Integer
   end
 end
+
 describe '#==' do
   it 'is the same project if two projects have the same name' do
     project1 = Project.new({:name => 'Teaching Kids to Code', :id => nil})
     project2 = Project.new({:name => 'Teaching Kids to Code', :id => nil})
     expect(project1 == project2).to eq true
   end
-
 
   context '.all' do
     it 'is empty to start' do
@@ -50,6 +50,7 @@ describe '#==' do
       expect(Project.all).to eq [project]
     end
   end
+
   describe '.find' do
     it 'returns a project by id' do
       project1 = Project.new({:name => 'Teaching Kids to Code', :id => nil})
@@ -59,7 +60,6 @@ describe '#==' do
       expect(Project.find(project1.id)).to eq project1
     end
   end
-
 
   describe '#update' do
     it 'allows a user to update a project' do
@@ -78,6 +78,7 @@ describe '#==' do
       expect(Project.all).to eq []
     end
   end
+
   describe '#volunteers' do
     it 'returns all volunteers for a specific project' do
       project = Project.new({:name => 'Teaching Kids to Code', :id => nil})
