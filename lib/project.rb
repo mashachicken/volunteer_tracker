@@ -33,9 +33,8 @@ class Project
     id = project.fetch("id").to_i
     Project.new({:name => name, :id => id})
   end
-  def update(attributes)
-    @name = attributes.fetch :name
-    @id = self.id
+  def update(name)
+    @name = name
     DB.exec("UPDATE projects SET name = '#{@name}' WHERE id = #{@id};")
   end
   def delete
