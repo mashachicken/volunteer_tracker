@@ -2,7 +2,7 @@
 #### 01.11.20
 #### By Masha Ivy
 ## Description
- * Web application that tracks projects and the volunteers working on them.
+  _Web application that tracks projects and the volunteers working on them._
 
 ## Specs
 * Users are able to view, add, update and delete projects.
