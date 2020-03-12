@@ -1,4 +1,4 @@
-# _BirdieWordie Kids Learning App_
+# _Projects and Volunteers_
 #### 01.11.20
 #### By Masha Ivy
 ## Description
